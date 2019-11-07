@@ -1,0 +1,176 @@
+@charset "UTF-8";
+@import "./common.scss";
+
+//处理1px 边框
+@svg 1px-border {
+  width: 4px;
+  height: 4px;
+  @rect {
+    fill: transparent;  // content为透明
+    width: 100%;  // 宽度为4px * 100%
+    height: 100%;  // 高度为4px * 100%
+    stroke-width: 25%;  // 边框宽度 4px * 25%(即1px)
+    stroke: var(--color, #000);  // 颜色
+  }
+}
+
+@svg square {
+  @rect {
+    fill: var(--color, #000);
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+.container{
+  width: 100%;
+  .text{
+    font-size: 30px;
+  }
+  .box{
+    border: 1px solid;   // 这里将单边覆盖上面border的宽度设置
+    border-image: svg(1px-border param(--color, #ee755f)) 1 stretch;
+  }
+
+  .box{
+    width: 300px;
+    //height: 300px;
+    line-height: 300px;
+    text-align: center;
+    font-size: 30px;
+    background: url(../images/mmexport1540270131194.jpg) no-repeat center center;
+    background-size: 100%;
+  }
+
+}
+
+
+//处理元素容器宽高比
+[aspectratio] {
+  position: relative;
+}
+[aspectratio]::before {
+  content: '';
+  display: block;
+  width: 1px;
+  margin-left: -1px;
+  height: 0;
+}
+[aspectratio-content] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+//这两个分开写
+[w-188-246] {
+  width: 188px;
+  background-color: red;
+  //background: white svg(square param(--color #00b1ff));
+}
+[w-188-246] {
+  aspect-ratio: '188:246';
+}
+
+
+
+button{
+  display: inline-block;
+  width: 100%;
+  line-height: 100px;
+  text-align: center;
+  border: none;
+  outline: none;
+  font-size: 30px;
+  background-color: #39ab85;
+  color: #fff;
+}
+.border-box{
+  position: relative;
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
+  //background: white svg(square param(--color #00b1ff));
+  &:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    background: #000;
+    width: 100%;
+    height: 1px;
+    transform: scaleY(0.5);
+    transform-origin: 0 0;
+  }
+}
+
+
+//默认
+.mui-switch {
+  width: 90px;
+  height: 50px;
+  position: relative;
+  border: 1px solid #dfdfdf;
+  background-color: #fdfdfd;
+  box-shadow: #dfdfdf 0 0 0 0 inset;
+  border-radius: 30px;
+  background-clip: content-box;
+  display: inline-block;
+  -webkit-appearance: none;
+  user-select: none;
+  outline: none;
+  &:before {
+    content: '';
+    width: 46px;
+    height: 46px;
+    position: absolute;
+    top: 50%;
+    left: 1px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+  &:checked {
+    border-color: #64bd63;
+    box-shadow: #64bd63 0 0 0 16px inset;
+    background-color: #64bd63;
+    &:before{
+      left: 41px;
+    }
+  }
+}
+//简单的背景过渡效果,加mui-switch-animbg类即可
+.mui-switch.mui-switch-animbg{
+  transition: background-color ease 0.4s;
+  &:before {
+    transition: left 0.3s;
+  }
+  &:checked {
+    box-shadow: #dfdfdf 0 0 0 0 inset;
+    background-color: #64bd63;
+    transition: border-color 0.4s, background-color ease 0.4s;
+    &:before{
+      transition: left 0.3s;
+    }
+  }
+}
+//过渡效果
+.mui-switch.mui-switch-anim{
+  transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s;
+  &:before {
+    transition: left 0.3s;
+  }
+  &:checked {
+    box-shadow: #64bd63 0 0 0 40px inset;
+    background-color: #64bd63;
+    transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s;
+    &:before {
+      transition: left 0.3s;
+    }
+  }
+}

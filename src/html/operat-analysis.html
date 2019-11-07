@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">-->
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+    <title>营运助理平台</title>
+    <!--<link rel="stylesheet" href="../css/common.css">-->
+    <!--<link rel="stylesheet" href="../css/weui.css">-->
+    <!--<link rel="stylesheet" href="../css/jquery-weui.css">-->
+    <!--<link rel="stylesheet" href="../css/layer.css">-->
+
+    <link rel="stylesheet" href="../css/layer.css">
+    <!--<link rel="stylesheet" href="../css/mobileSelect.css">-->
+    <link rel="stylesheet" href="../css/mobileSelect.css">
+    <link rel="stylesheet" href="../css/weui.css">
+    <link rel="stylesheet" href="../css/dropload.css">
+    <link rel="stylesheet" href="../css/operat-analysis.css">
+    <!--<script src="../js/flexible.js"></script>-->
+    <script>
+        !function(e){function t(a){if(i[a])return i[a].exports;var n=i[a]={exports:{},id:a,loaded:!1};return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var i={};return t.m=e,t.c=i,t.p="",t(0)}([function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=window;t["default"]=i.flex=function(e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),l=o.match(/U3\/((\d+|\.){5,})/i),c=l&&parseInt(l[1].split(".").join(""),10)>=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);var u=1/s,m=r.querySelector('meta[name="viewport"]');m||(m=r.createElement("meta"),m.setAttribute("name","viewport"),r.head.appendChild(m)),m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),r.documentElement.style.fontSize=a/2*s*n+"px"},e.exports=t["default"]}]);
+        flex(100, 1);
+    </script>
+</head>
+<body >
+<div class="operat-analysis-warp">
+    <div class="operat-analysis-inner">
+        <div class="fixed-top-picker">
+            <div class="select-flex">
+                <div class="select-flex-list">
+                    <div class="flex-list-label">
+                        <i class="Icon store"></i>
+                        <span class="name" id="store-type">全部店铺</span>
+                    </div>
+                </div>
+                <div class="select-flex-list">
+                    <div class="flex-list-label ">
+                        <i class="Icon Date"></i>
+                        <span class="name" id="oldDate">02.28-03.29</span>
+                    </div>
+                </div>
+                <div class="select-flex-list">
+                    <div class="flex-list-label no-border">
+                        <i class="Icon Date"></i>
+                        <span class="name" id="newDate">02.28-03.29</span>
+                    </div>
+                </div>
+            </div>
+            <div class="table-head">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="total-th">编号</th>
+                            <th class="store-th">商铺名称</th>
+                            <th class="Date-th minus">
+                                <div class="Date-th-label">
+                                    <!--<div id="oldDate1">2017-12-25</div>-->
+                                    <div>统计日期</div>
+                                </div>
+                                <div class="sort-icon" w-18-28 aspectratio>
+                                    <div aspectratio-content class="sort-icon-inner"></div>
+                                </div>
+                            </th>
+                            <th class="Date-th">
+                                <div class="Date-th-label">
+                                    <!--<div id="newDate1">2017-12-25</div>-->
+                                    <div>对比日期</div>
+                                </div>
+                                <div class="sort-icon" w-18-28 aspectratio>
+                                    <div aspectratio-content class="sort-icon-inner"></div>
+                                </div>
+                            </th>
+                            <th class="percent-th">占比</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="table-list">
+            <ul id="table-main">
+                <li class="total">
+                    <div class="list-col total-td">总计</div>
+                    <div class="list-col store-td">-</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col percent-td">154%</div>
+                </li>
+                <li>
+                    <div class="list-col total-td">01</div>
+                    <div class="list-col store-td"><span class="store-text">海鲜自助海</span></div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col percent-td">154%</div>
+                </li>
+                <li>
+                    <div class="list-col total-td">01</div>
+                    <div class="list-col store-td"><span class="store-text">海鲜自助海</span></div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col percent-td">154%</div>
+                </li>
+                <li>
+                    <div class="list-col total-td">01</div>
+                    <div class="list-col store-td"><span class="store-text">海鲜自助海</span></div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col percent-td">154%</div>
+                </li>
+                <li>
+                    <div class="list-col total-td">01</div>
+                    <div class="list-col store-td"><span class="store-text">海鲜自助海</span></div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col percent-td">154%</div>
+                </li>
+                <li>
+                    <div class="list-col total-td">01</div>
+                    <div class="list-col store-td"><span class="store-text">海鲜自助海</span></div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col percent-td">154%</div>
+                </li>
+                <li>
+                    <div class="list-col total-td">01</div>
+                    <div class="list-col store-td"><span class="store-text">海鲜自助海</span></div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col percent-td">154%</div>
+                </li>
+                <li>
+                    <div class="list-col total-td">01</div>
+                    <div class="list-col store-td"><span class="store-text">海鲜自助海</span></div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col percent-td">154%</div>
+                </li>
+                <li>
+                    <div class="list-col total-td">01</div>
+                    <div class="list-col store-td"><span class="store-text">海鲜自助海</span></div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col percent-td">154%</div>
+                </li>
+                <li>
+                    <div class="list-col total-td">01</div>
+                    <div class="list-col store-td"><span class="store-text">海鲜自助海</span></div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col percent-td">154%</div>
+                </li>
+                <li>
+                    <div class="list-col total-td">01</div>
+                    <div class="list-col store-td"><span class="store-text">海鲜自助海</span></div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col percent-td">154%</div>
+                </li>
+                <li>
+                    <div class="list-col total-td">01</div>
+                    <div class="list-col store-td"><span class="store-text">海鲜自助海</span></div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col percent-td">154%</div>
+                </li>
+                <li>
+                    <div class="list-col total-td">01</div>
+                    <div class="list-col store-td"><span class="store-text">海鲜自助海</span></div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col percent-td">154%</div>
+                </li>
+                <li>
+                    <div class="list-col total-td">01</div>
+                    <div class="list-col store-td"><span class="store-text">海鲜自助海</span></div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col percent-td">154%</div>
+                </li>
+                <li>
+                    <div class="list-col total-td">01</div>
+                    <div class="list-col store-td"><span class="store-text">海鲜自助海</span></div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col percent-td">154%</div>
+                </li>
+                <li>
+                    <div class="list-col total-td">01</div>
+                    <div class="list-col store-td"><span class="store-text">海鲜自助海</span></div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col percent-td">154%</div>
+                </li>
+                <li>
+                    <div class="list-col total-td">01</div>
+                    <div class="list-col store-td"><span class="store-text">海鲜自助海</span></div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col Date-td">12,254,213.00</div>
+                    <div class="list-col percent-td">154%</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="search-container" style="display: none;">
+    <form id="searchForm">
+        <div class="search-warp">
+            <div class="search-list">
+                <div class="search-name">对比日期：</div>
+                <div class="search-main" >
+                    <div class="search-flex">
+                        <div id="compar-date-start" class="inner-show">开始日期</div>
+                        <input type="hidden" name="compareDateStart" id="compareDateStart">
+                    </div>
+                    <div class="search-main-hr"></div>
+                    <div class="search-flex">
+                        <div id="compar-date-end" class="inner-show">截止日期</div>
+                        <input type="hidden" name="compareDateEnd" id="compareDateEnd">
+                    </div>
+
+                </div>
+            </div>
+            <div class="search-list">
+                <div class="search-name">统计日期：</div>
+                <div class="search-main" >
+                    <div class="search-flex">
+                        <div id="datetime-picker-start" class="inner-show">开始日期</div>
+                        <input type="hidden" name="countDateStart" id="countDateStart">
+                    </div>
+                    <div class="search-main-hr"></div>
+                    <div class="search-flex">
+                        <div id="datetime-picker-end" class="inner-show">截止日期</div>
+                        <input type="hidden" name="countDateEnd" id="countDateEnd">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="search-list">
+                <div class="search-name">店铺名称：</div>
+                <div class="search-main">
+                    <div class="check_label">
+                        <div class="check_label_list">
+                            <input class="magic-radio" checked type="radio" name="store" id="all" value="all">
+                            <label for="all">全部店铺</label>
+                        </div>
+                        <div class="check_label_list">
+                            <input class="magic-radio" type="radio" name="store" id="all1" value="all1">
+                            <label for="all1">联营店铺</label>
+                        </div>
+                        <div class="check_label_list">
+                            <input class="magic-radio" type="radio" name="store" id="all2" value="all2">
+                            <label for="all2">租赁店铺</label>
+                        </div>
+                        <div class="check_label_list">
+                            <input class="magic-radio" type="radio" name="store" id="single" value="single">
+                            <label for="single">部分店铺</label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="single-store">
+                <div class="section-warp" id="search-bar-warp">
+                    <div class="search-bar">
+                        <div class="search-bar-ipt">
+
+                            <input id="searchInput" type="text"  placeholder="输入店铺名称">
+                            <label class="searchInput-label">
+                                <i class="search-icon"></i>
+                                <span class="search-label-text">查询店铺</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-list" id="unSelected-warp">
+                    <div class="search-name">未选中店铺：</div>
+                    <div class="search-main no-padding">
+                        <div class="search-main-flex unSelected" id="store-unSelected">
+                            <div class="store-list">
+                                <div class="store-list-inner">
+                                    <input class="magic-radio" type="checkbox" name="store" id="store-r1" value="single">
+                                    <label for="store-r1">店铺名称1</label>
+                                </div>
+                            </div>
+                            <div class="store-list">
+                                <div class="store-list-inner">
+                                    <input class="magic-radio" type="checkbox" name="store" id="store-r2" value="single">
+                                    <label for="store-r2">店铺名称2</label>
+                                </div>
+                            </div>
+                            <div class="store-list">
+                                <div class="store-list-inner">
+                                    <input class="magic-radio" type="checkbox" name="store" id="store-r3" value="single">
+                                    <label for="store-r3">店铺名称3</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-list" id="Selected-warp">
+                    <div class="search-name">选中店铺：</div>
+                    <div class="search-main no-padding">
+                        <div class="search-main-flex Selected" id="store-Selected">
+                            <div class='nodata'>暂无数据</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <div class="search-btn">
+        <button class="btn-list" id="reset">重置</button>
+        <button class="btn-list sure" id="sure">确定</button>
+    </div>
+
+</div>
+
+<script src="../js/lib/jquery-1.8.3.min.js"></script>
+<script src="../js/lib/fastclick.js"></script>
+<script src="../js/lib/layer.js"></script>
+<script src="../js/lib/jquery-weui.js"></script>
+<script src="../js/lib/mobileSelect.js"></script>
+<script src="../js/selectDate.js"></script>
+<script src="../js/lib/dropload.js"></script>
+<script src="../js/operat-analysis.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+    <link rel="apple-touch-icon" href="images/favicon.ico">
+    <link rel="Shortcut Icon" href="images/favicon.ico" type="image/x-icon">
+    <title>测试demo（vw）</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+
+    <link rel="stylesheet" href="../css/comm-dialog.css">
+    <link rel="stylesheet" href="../css/test.css">
+
+</head>
+<body>
+
+    <div class="container">
+        <p class="text">我是测试文字</p>
+        <div class="box">我是box</div>
+    </div>
+
+    <div w-188-246 aspectratio>
+        <div aspectratio-content></div>
+    </div>
+
+    <div class="border-box">
+        121212
+    </div>
+
+    <h3>babel 测试</h3>
+    <!--我是注释-->
+
+    <button class="btn">点击</button>
+
+    <br>
+    <br>
+    <br>
+
+    <label><input class="mui-switch" type="checkbox"> 默认未选中</label><br>
+    <label><input class="mui-switch" type="checkbox" checked> 默认选中</label><br>
+    <label><input class="mui-switch mui-switch-animbg" type="checkbox"> 默认未选中,简单的背景过渡效果,加mui-switch-animbg类即可</label><br>
+    <label><input class="mui-switch mui-switch-animbg" type="checkbox" checked> 默认选中</label><br>
+    <label><input class="mui-switch mui-switch-anim" type="checkbox"> 默认未选中，过渡效果，加 mui-switch-anim类即可</label><br>
+    <label><input class="mui-switch mui-switch-anim" type="checkbox" checked> 默认选中</label>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <pre>弹窗调用</pre>
+    <br>
+
+    <button id="btn">加载中</button>
+    <button id="btn1">成功</button>
+    <button id="btn2">失败</button>
+    <button id="icon">纯图标</button>
+
+
+    <script src="../js/lib/jquery-1.8.3.min.js"></script>
+    <script src="../js/lib/fastclick.js"></script>
+    <script src="../js/lib/comm-dialog.js"></script>
+    <script src="../js/test.js"></script>
+    <script>
+        $("#btn").on("click", function () {
+            $(document).dialog({
+                type : 'toast',
+                infoIcon: '../images/icon/loading.gif',
+                infoText: '正在加载中',
+                autoClose: 2500
+            });
+        })
+        $("#btn1").on("click", function () {
+            $(document).dialog({
+                type : 'toast',
+                infoIcon: '../images/icon/success.png',
+                infoText: '加载成功',
+                autoClose: 2500
+            });
+        })
+
+        $("#btn2").on("click", function () {
+            $(document).dialog({
+                type : 'toast',
+                infoIcon: '../images/icon/fail.png',
+                infoText: '加载失败',
+                autoClose: 2500
+            });
+        })
+
+        $("#icon").on("click", function () {
+            $('body').dialog({
+                type : 'toast',
+                infoIcon: '../images/icon/loading.gif',
+                autoClose: 2500
+            });
+        })
+
+
+    </script>
+</body>
+</html>

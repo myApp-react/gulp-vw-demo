@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>联系客服</title>
+    <link rel="stylesheet" href="../css/dropload.css">
+    <link rel="stylesheet" href="../css/common-serviceList.css">
+    <script>
+        !function(e){function t(a){if(i[a])return i[a].exports;var n=i[a]={exports:{},id:a,loaded:!1};return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var i={};return t.m=e,t.c=i,t.p="",t(0)}([function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=window;t["default"]=i.flex=function(e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),l=o.match(/U3\/((\d+|\.){5,})/i),c=l&&parseInt(l[1].split(".").join(""),10)>=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);var u=1/s,m=r.querySelector('meta[name="viewport"]');m||(m=r.createElement("meta"),m.setAttribute("name","viewport"),r.head.appendChild(m)),m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),r.documentElement.style.fontSize=a/2*s*n+"px"},e.exports=t["default"]}]);
+        flex(100, 1);
+    </script>
+</head>
+<body>
+    <div class="serviceList-warp">
+        <div class="serviceList-inner">
+            <div class="top-main">
+                <div w-480-203 aspectratio>
+                    <div aspectratio-content class="tipsImg"></div>
+                </div>
+                <p class="hotline">服务热线:021-5458351</p>
+                <div class="creatNewChart">
+                    <!--<button>创建新咨询</button>-->
+                    <a href="../html/common-service.html">创建新咨询</a>
+                </div>
+            </div>
+            <div class="historical-record">
+                <h4 class="title">咨询历史</h4>
+                <div class="record-main">
+                    <ul id="list-main-ul"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/lib/jquery-1.8.3.min.js"></script>
+    <script src="../js/lib/fastclick.js"></script>
+    <script src="../js/lib/dropload.js"></script>
+    <script>
+
+        // dropload
+        var dropload = $('.record-main').dropload({
+            domDown : {
+                domClass   : 'dropload-down',
+                domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',
+                domLoad    : '<div class="dropload-load"><span class="loading"></span><span class="loading-text">加载中...</span></div>',
+                domNoData  : '<div class="dropload-noData">暂无数据</div>'
+            },
+            loadDownFn : function(me){
+                $.ajax({
+                    type: 'GET',
+                    url: './more.json',
+                    dataType: 'json',
+                    success: function(data){
+                        console.log(data)
+                        var result = '';
+                        for(var i = 0; i < data.lists.length; i++){
+                            result += '<li>' +
+                                '<a href="../html/common-service.html">' +
+                                    '<div class="brief-info">' +
+                                        '<h3 class="brief-info-title">'+ data.lists[i].title +'</h3>' +
+                                        '<p class="date">2019-02-31 12：56</p>' +
+                                    '</div>' +
+                                    '<div class="brief-num">' +
+                                        '<div class="brief-num-icon"></div>' +
+                                        '<p class="brief-num-text">9</p>' +
+                                    '</div>' +
+                                '</a>'
+                                +'</li>';
+
+                            if((i + 1) >= data.lists.length){
+                                // 锁定
+                                dropload.lock();
+                                // 无数据
+                                dropload.noData();
+                                break;
+                            }
+                        }
+                        // 为了测试，延迟1秒加载
+                        setTimeout(function(){
+                            $("#list-main-ul").append(result);
+                            // 每次数据加载完，必须重置
+                            dropload.resetload();
+                        },1000);
+                    },
+                    error: function(xhr, type){
+                        alert('Ajax error!');
+                        // 即使加载出错，也得重置
+                        dropload.resetload();
+                    }
+                });
+            }
+        });
+
+
+    </script>
+</body>
+</html>

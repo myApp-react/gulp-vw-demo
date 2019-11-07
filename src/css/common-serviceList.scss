@@ -1,0 +1,241 @@
+@import "common.scss";
+
+@svg 1px-border {
+  height: 2px;
+  @rect {
+    fill: var(--color, black);
+    width: 100%;
+    height: 50%;
+  }
+}
+
+@svg square {
+  @rect {
+    fill: var(--color, black);
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+.container{
+  width: 100%;
+  .text{
+    font-size: 30px;
+  }
+  .box{
+    width: 300px;
+    height: 300px;
+    //border: 1px solid #ddd;
+  }
+}
+
+
+//处理元素容器宽高比
+[aspectratio] {
+  position: relative;
+}
+[aspectratio]::before {
+  content: '';
+  display: block;
+  width: 1px;
+  margin-left: -1px;
+  height: 0;
+}
+[aspectratio-content] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+//这两个分开写
+[w-188-246] {
+  width: 188px;
+  background-color: red;
+
+  //background: white svg(square param(--color #00b1ff));
+}
+
+[w-188-246] {
+  aspect-ratio: '188:246';
+}
+
+.border-box{
+  position: relative;
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
+  //background: white svg(square param(--color #00b1ff));
+  &:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    background: #000;
+    width: 100%;
+    height: 1px;
+    transform: scaleY(0.5);
+    transform-origin: 0 0;
+  }
+}
+.serviceList-warp{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  .serviceList-inner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-top: 562px;
+    box-sizing: border-box;
+  }
+  .top-main{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  .tipsImg{
+    background: url(../images/tipsImg.png) no-repeat center;
+    background-size: 100% 100%;
+  }
+  //这两个分开写
+  [w-480-203] {
+    margin: 80px auto 70px;
+    width: 480px;
+    //background-color: red;
+
+    //background: white svg(square param(--color #00b1ff));
+  }
+  [w-480-203] {
+    aspect-ratio: '480:203';
+  }
+  .hotline{
+    font-size: 26px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 36px;
+    letter-spacing: 3px;
+    color: #333232;
+    text-align: center;
+  }
+  .creatNewChart{
+    margin: 20px auto 0;
+    width: 560px;
+    a{
+      display: block;
+      width: 100%;
+      height: 80px;
+      line-height: 80px;
+      background-color: #a50303;
+      border-radius: 8px;
+      font-size: 30px;
+      color: #fff;
+      text-align: center;
+    }
+    button{
+      width: 100%;
+      height: 80px;
+      line-height: 80px;
+      background-color: #a50303;
+      border-radius: 8px;
+      font-size: 30px;
+      color: #fff;
+    }
+  }
+  .historical-record{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-top: 58px;
+    box-sizing: border-box;
+    .title{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 0 40px;
+      box-sizing: border-box;
+      font-size: 26px;
+      font-weight: normal;
+      line-height: 58px;
+      color: #999796;
+      border-bottom: solid 1px #e5e5e5;
+    }
+    .record-main{
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    ul{
+      width: 100%;
+    }
+    li{
+      border-bottom: solid 1px #e5e5e5;
+      a{
+        padding: 20px 40px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+      }
+      &:active{
+        background-color: #eaeaea;
+        transition-duration: 0.3s;
+      }
+    }
+    .brief-info{
+      max-width: 500px;
+    }
+    .brief-info-title{
+      width: 100%;
+      font-size: 30px;
+      line-height: 36px;
+      letter-spacing: 0px;
+      color: #333232;
+      font-weight: normal;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      word-break: break-all;
+    }
+    .date{
+      margin-top: 16px;
+      font-size: 24px;
+      font-weight: normal;
+      font-stretch: normal;
+      line-height: 36px;
+      letter-spacing: 0;
+      color: #999796;
+    }
+    .brief-num{
+      text-align: center;
+    }
+    .brief-num-icon{
+      margin: auto;
+      width: 30px;
+      height: 27px;
+      background: url(../images/info-icon.png) no-repeat center;
+      background-size: 100% 100%;
+    }
+    .brief-num-text{
+      font-size: 24px;
+      font-weight: normal;
+      font-stretch: normal;
+      line-height: 36px;
+      letter-spacing: 0;
+      color: #999796;
+    }
+  }
+}
+
+

@@ -1,0 +1,70 @@
+@charset "UTF-8";
+@import "./common.scss";
+
+.operat-index-warp{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #EEE;
+  overflow: hidden;
+  .operat-index-inner{
+    width: 100%;
+    height: 100%;
+    padding: 0 30px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .operat-banner{
+    padding-top: 22px;
+    width: 100%;
+    height: 460px;
+    border-radius: 8px;
+    overflow: hidden;
+    img{
+      display: block;
+      width: 100%;
+      height: inherit;
+    }
+  }
+  .operat-handle{
+    margin-top: 40px;
+    width: 100%;
+    height: 200px;
+    background: url(../images/operat-handle.png) no-repeat center;
+    background-size: 100% 100%;
+  }
+}
+.layui-m-layer-footer.operat-index-pop{
+  .layui-m-layercont{
+    box-sizing: border-box;
+    padding: 0;
+    border-radius: 5px;
+  }
+  .btn-list{
+    display: block;
+    padding: 0;
+    width: 100%;
+    height: 110px;
+    line-height: 110px;
+    text-align: center;
+    font-size: 32px;
+    color: #111111;
+    border-radius: 5px;
+    background-color: #fff;
+    &:disabled{
+      color: #929292;
+    }
+  }
+  .layui-m-layerbtn {
+    span{
+      line-height: 110px;
+      font-size: 32px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+
+  }
+}

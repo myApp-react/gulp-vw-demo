@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>完善资料</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/layer.css">
+    <link rel="stylesheet" href="../css/mobileSelect.css">
+    <link rel="stylesheet" href="../css/comm-dialog.css">
+    <link rel="stylesheet" href="../css/upload-avatar.css">
+    <script>
+        !function(e){function t(a){if(i[a])return i[a].exports;var n=i[a]={exports:{},id:a,loaded:!1};return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports}var i={};return t.m=e,t.c=i,t.p="",t(0)}([function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=window;t["default"]=i.flex=function(e,t){var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),l=o.match(/U3\/((\d+|\.){5,})/i),c=l&&parseInt(l[1].split(".").join(""),10)>=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&&d[1]>534||c||(s=1);var u=1/s,m=r.querySelector('meta[name="viewport"]');m||(m=r.createElement("meta"),m.setAttribute("name","viewport"),r.head.appendChild(m)),m.setAttribute("content","width=device-width,user-scalable=no,initial-scale="+u+",maximum-scale="+u+",minimum-scale="+u),r.documentElement.style.fontSize=a/2*s*n+"px"},e.exports=t["default"]}]);
+        flex(100, 1);
+    </script>
+</head>
+<body>
+    <div class="upload-avatar-warp">
+        <div class="upload-avatar-inner">
+            <div class="upload-area">
+                <span class="upload-area-hold"></span>
+                <img src="" class="userImg" alt="">
+            </div>
+            <div class="upload-area-tips">点击上传本人照片</div>
+            <div class="user-handle">
+                <form action="" id="user-form">
+                    <ul>
+                        <li>
+                            <h3 class="title">性别</h3>
+                            <div class="item-form-list">
+                                <div class="subtext">Gender</div>
+                                <div class="item-content">
+                                    <div class="check_label" style="justify-content:flex-start">
+                                        <div class="check_label_list">
+                                            <input class="magic-radio" checked type="radio" name="sex" id="r1" value="boy">
+                                            <label for="r1">男</label>
+                                        </div>
+                                        <div class="check_label_list">
+                                            <input class="magic-radio" type="radio" name="sex" id="r2" value="boy">
+                                            <label for="r2">女</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h3 class="title">生日</h3>
+                            <div class="item-form-list">
+                                <div class="subtext">Date of Birth</div>
+                                <div class="item-content">
+                                    <div class="Birth-show" id="datetime-picker">请选择生日</div>
+                                    <input type="hidden" class="Birth" name="Birth" placeholder="请选择生日">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+            <div class="user-submit">
+                <button class="btn" id="btn">提交资料</button>
+            </div>
+        </div>
+    </div>
+    <script src="../js/lib/jquery-1.8.3.min.js"></script>
+    <script src="../js/lib/fastclick.js"></script>
+    <script src="../js/lib/mobileSelect.js"></script>
+    <script src="../js/lib/selectDate.js"></script>
+    <script src="../js/lib/comm-dialog.js"></script>
+    <script src="../js/lib/layer.js"></script>
+    <script>
+
+        //日期格式化
+         function dateFtt(fmt, date){ //author: meizz
+            const o = {
+                "M+" : date.getMonth()+1,                 //月份
+                "d+" : date.getDate(),                    //日
+                "h+" : date.getHours(),                   //小时
+                "m+" : date.getMinutes(),                 //分
+                "s+" : date.getSeconds(),                 //秒
+                "q+" : Math.floor((date.getMonth()+3)/3), //季度
+                "S"  : date.getMilliseconds()             //毫秒
+            };
+            if(/(y+)/.test(fmt))
+                fmt=fmt.replace(RegExp.$1, (date.getFullYear()+"").substr(4 - RegExp.$1.length));
+            for(let k in o)
+                if(new RegExp("("+ k +")").test(fmt))
+                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+            return fmt;
+        };
+        var Today = dateFtt("yyyy-MM-dd", new Date());
+
+        //日期选择
+        $.selectDate("#datetime-picker",{
+            start:1900,
+            end:2100,
+            select: Today.split("-"),
+            title:'请选择生日'
+        },function (data) {
+            console.log(data);
+            $(".Birth").val(String(data.year)+ '-' + String(data.month)+ '-' + String(data.day))
+            // Birthday = String(data.year) + String(data.month) + String(data.day)
+        });
+
+        $("#btn").on("click", function (e) {
+            e.preventDefault()
+           var toast = $(document).dialog({
+                type : 'toast',
+                infoIcon: '../images/icon/loading.gif',
+                infoText: '正在请求中',
+            });
+            var d = {};
+            var t = $('#user-form').serializeArray();
+            $.each(t, function() {
+                d[this.name] = this.value;
+            });
+
+            console.log(d)
+
+            if(d.sex === "" ){
+
+            }else if(d.Birth === ""){
+                toast.update({
+                    infoIcon: '../images/icon/fail.png',
+                    infoText: '图片无法识别，请重新上传',
+                    autoClose: 25000,
+                });
+            }else {
+                console.log(d);
+                toast.update({
+                    infoIcon: '../images/icon/success.png',
+                    infoText: '加载成功',
+                    autoClose: 2500,
+                });
+            }
+        })
+
+    </script>
+</body>
+</html>
