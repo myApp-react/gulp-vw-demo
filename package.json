@@ -47,6 +47,6 @@
     "postcss-cssnext": "^3.1.0",
     "postcss-pxtorem": "^4.0.1",
     "postcss-short-color": "^4.0.0",
-    "yarn": "^1.12.3"
+    "yarn": "^1.22.0"
   }
 }
